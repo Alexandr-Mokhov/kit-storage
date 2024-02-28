@@ -5,6 +5,11 @@
 	gap: 30px;
 }
 
+.form__title {
+	margin: 0;
+	text-align: center;
+}
+
 .form__input {
 	height: 30px;
 	padding: 0 10px;

@@ -3,9 +3,10 @@ import './Form.css';
 
 function onSubmit() { }
 
-export default function Form({ name, buttonText }) {
+export default function Form({ name, title, buttonText }) {
 	return (
 		<form className="form" onSubmit={onSubmit} name={name} noValidate>
+			<h2 className="form__title">{title}</h2>
 			<input
 				id="input-email"
 				className="form__input"
