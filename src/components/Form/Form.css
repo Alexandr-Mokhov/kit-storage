@@ -23,3 +23,8 @@
 .form__button:hover {
 	background-color: #EEE;
 }
+
+.form__link {
+	color: #FFF;
+	text-align: center;
+}

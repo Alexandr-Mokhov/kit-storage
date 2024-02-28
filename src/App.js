@@ -1,14 +1,18 @@
+import { Route, Routes } from 'react-router-dom';
 import Header from './components/Header/Header';
-import Auth from './components/Auth/Auth';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
 import './App.css';
 
-function App() {
+export default function App() {
   return (
     <div className="page">
       <Header />
-      <Auth />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
     </div>
   );
 }
 
-export default App;

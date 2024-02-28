@@ -3,7 +3,7 @@ import './Form.css';
 
 function onSubmit() { }
 
-function Form({ name, buttonText}) {
+export default function Form({ name, buttonText }) {
 	return (
 		<form className="form" onSubmit={onSubmit} name={name} noValidate>
 			<input
@@ -32,9 +32,10 @@ function Form({ name, buttonText}) {
 			<button className="form__button" type="submit">
 				{buttonText}
 			</button>
-			{name === 'register' ? <Link className="form__link-login" to="/sign-in">Уже зарегистрированы? Войти</Link> : ''}
+			{name === "register" ? 
+			<Link className="form__link" to="/login">Уже зарегистрированы? Войти</Link> :
+			<Link className="form__link" to="/register">Зарегистрироваться</Link>}
 		</form>
 	);
 }
 
-export default Form;

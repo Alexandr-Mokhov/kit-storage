@@ -1,7 +1,11 @@
-.auth {
+.login {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	height: calc(100vh - 57px);
+}
+
+.login__title {
+	margin-top: 0;
 }
