@@ -1,6 +1,6 @@
 .header {
   background-color: #282c34;
-  height: 60px;
+  height: 55px;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -8,7 +8,9 @@
 	border-bottom: 1px solid #AAA;
 }
 
-.header__logo {
+.header__title {
 	font-size: 40px;
 	color: #FFF;
+  font-weight: 400;
+  margin: 0;
 }

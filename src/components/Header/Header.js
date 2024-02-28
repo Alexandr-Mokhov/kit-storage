@@ -3,9 +3,7 @@ import './Header.css';
 function Header() {
   return (
 		<header className="header">
-			<div className="header__logo">
-				Kit Storage
-			</div>
+			<h1 className="header__title">Kit Storage</h1>
 		</header>
   );
 }
