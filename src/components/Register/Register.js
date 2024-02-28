@@ -4,7 +4,7 @@ export default function Register() {
 	return (
 		<main className="auth">
 			<Form
-				name={'register'}
+				nameForm={'register'}
 				title={'Регистрация'}
 				buttonText={'Зарегистрироваться'}
 			/>

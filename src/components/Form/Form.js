@@ -1,11 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { registerUser } from '../../utils/auth';
+import { authUser, registerUser } from '../../utils/auth';
 import './Form.css';
 
-export default function Form({ name, title, buttonText }) {
+export default function Form({ nameForm, title, buttonText }) {
+	const [token, setToken] = useState('');
 	const navigate = useNavigate();
 	const [values, setValues] = useState({});
+	console.log(token);
 
 	const handleChange = (evt) => {
 		const target = evt.target;
@@ -16,11 +18,26 @@ export default function Form({ name, title, buttonText }) {
 
 	function handleSubmit(evt) {
 		evt.preventDefault();
-		if (name === "register") {
-			const { name, email, password } = values;
+		const { name, email, password } = values;
+		
+		if (nameForm === "register") {
 			registerUser(name, email, password)
 				.then((res) => {
 					if (res.status === 'ok') {
+						navigate('/login', { replace: true });
+					} else {
+						return Promise.reject(res.status);
+					}
+				})
+				.catch((err) => {
+					console.log(err + ` : Ошибка введенных данных`);
+					alert('Ошибка введенных данных, проверьте правильность');
+				});
+		} else {
+			authUser(email, password)
+				.then((res) => {
+					if (res.status === 'ok') {
+						setToken(res.token)
 						navigate('/', { replace: true });
 					} else {
 						return Promise.reject(res.status);
@@ -34,9 +51,9 @@ export default function Form({ name, title, buttonText }) {
 	}
 
 	return (
-		<form className="form" onSubmit={handleSubmit} name={name}>
+		<form className="form" onSubmit={handleSubmit} name={nameForm}>
 			<h2 className="form__title">{title}</h2>
-			{name === "register" &&
+			{nameForm === "register" &&
 				<input
 					id="input-name"
 					className="form__input"
@@ -74,7 +91,7 @@ export default function Form({ name, title, buttonText }) {
 			<button className="form__button" type="submit">
 				{buttonText}
 			</button>
-			{name === "register" ?
+			{nameForm === "register" ?
 				<Link className="form__link" to="/login">Уже зарегистрированы? Войти</Link> :
 				<Link className="form__link" to="/register">Зарегистрироваться</Link>}
 		</form>
