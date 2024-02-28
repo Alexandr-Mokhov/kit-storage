@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { registerUser } from '../../utils/auth';
 import './Form.css';
 
 export default function Form({ name, title, buttonText }) {
+	const navigate = useNavigate();
 	const [values, setValues] = useState({});
 
 	const handleChange = (evt) => {
@@ -14,7 +16,21 @@ export default function Form({ name, title, buttonText }) {
 
 	function handleSubmit(evt) {
 		evt.preventDefault();
-		console.log(values);
+		if (name === "register") {
+			const { name, email, password } = values;
+			registerUser(name, email, password)
+				.then((res) => {
+					if (res.status === 'ok') {
+						navigate('/', { replace: true });
+					} else {
+						return Promise.reject(res.status);
+					}
+				})
+				.catch((err) => {
+					console.log(err + ` : Ошибка введенных данных`);
+					alert('Ошибка введенных данных, проверьте правильность');
+				});
+		}
 	}
 
 	return (
