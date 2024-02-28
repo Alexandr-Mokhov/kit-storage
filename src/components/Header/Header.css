@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: flex-start;
 	padding: 0 30px;
-	border-bottom: 1px solid #AAA;
+	border-bottom: 1px solid #555;
 }
 
 .header__title {
