@@ -1,5 +1,4 @@
 .header {
-  background-color: #282c34;
   height: 55px;
   display: flex;
   flex-direction: column;
@@ -10,7 +9,6 @@
 
 .header__title {
 	font-size: 40px;
-	color: #FFF;
   font-weight: 400;
   margin: 0;
 }
