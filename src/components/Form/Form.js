@@ -4,10 +4,8 @@ import { authUser, registerUser } from '../../utils/auth';
 import './Form.css';
 
 export default function Form({ nameForm, title, buttonText }) {
-	const [token, setToken] = useState('');
 	const navigate = useNavigate();
 	const [values, setValues] = useState({});
-	console.log(token);
 
 	const handleChange = (evt) => {
 		const target = evt.target;
@@ -16,37 +14,45 @@ export default function Form({ nameForm, title, buttonText }) {
 		setValues({ ...values, [name]: value });
 	}
 
+	function userRegistration(name, email, password) {
+		registerUser(name, email, password)
+			.then((res) => {
+				if (res.status === 'ok') {
+					navigate('/login', { replace: true });
+				} else {
+					return Promise.reject(res.status);
+				}
+			})
+			.catch((err) => {
+				console.log(err + ` : Ошибка введенных данных`);
+				alert('Ошибка введенных данных, проверьте правильность');
+			});
+	}
+
+	function userAuthorization(email, password) {
+		authUser(email, password)
+			.then((res) => {
+				if (res.status === 'ok') {
+					localStorage.setItem('token', res.token);
+					navigate('/', { replace: true });
+				} else {
+					return Promise.reject(res.status);
+				}
+			})
+			.catch((err) => {
+				console.log(err + ` : Ошибка введенных данных`);
+				alert('Ошибка введенных данных, проверьте правильность');
+			});
+	}
+
 	function handleSubmit(evt) {
 		evt.preventDefault();
 		const { name, email, password } = values;
-		
+
 		if (nameForm === "register") {
-			registerUser(name, email, password)
-				.then((res) => {
-					if (res.status === 'ok') {
-						navigate('/login', { replace: true });
-					} else {
-						return Promise.reject(res.status);
-					}
-				})
-				.catch((err) => {
-					console.log(err + ` : Ошибка введенных данных`);
-					alert('Ошибка введенных данных, проверьте правильность');
-				});
+			userRegistration(name, email, password)
 		} else {
-			authUser(email, password)
-				.then((res) => {
-					if (res.status === 'ok') {
-						setToken(res.token)
-						navigate('/', { replace: true });
-					} else {
-						return Promise.reject(res.status);
-					}
-				})
-				.catch((err) => {
-					console.log(err + ` : Ошибка введенных данных`);
-					alert('Ошибка введенных данных, проверьте правильность');
-				});
+			userAuthorization(email, password)
 		}
 	}
 
