@@ -1,7 +1,7 @@
 import iconFile from '../../images/icon-file.png';
 import './File.css';
 
-export default function File({ file, handleDeleteClick }) {
+export default function File({ file, handleDeleteClick, handleDownloadClick }) {
 	function setSrc() {
 		if (file.mimeType.includes('image')) {
 			return file.url;
@@ -14,10 +14,14 @@ export default function File({ file, handleDeleteClick }) {
 		handleDeleteClick(file);
 	}
 
+	function onDownloadFiles() {
+		handleDownloadClick(file);
+	}
+
 	return (
 		<div className="file">
 			<p className="file__name">{file.name}</p>
-			<button className="file__button file__button_download">
+			<button className="file__button file__button_download" onClick={onDownloadFiles}>
 				<img className="file__img" src={setSrc()} alt={file.name} />
 			</button>
 			<button className="file__button file__button_delete" onClick={onFileDelete}>

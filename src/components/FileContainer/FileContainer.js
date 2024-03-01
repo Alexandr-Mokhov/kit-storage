@@ -3,8 +3,6 @@ import initialFiles from '../../initialFiles';
 import File from '../File/File';
 import './FileContainer.css';
 
-
-
 export default function FileContainer() {
 	const [arrFiles, setArrFiles] = useState([]);
 
@@ -16,6 +14,18 @@ export default function FileContainer() {
 		setArrFiles((state) => state.filter(item => item.id !== file.id));
 	}
 
+	function handleDownloadClick(file) {
+		const link = document.createElement('a');
+		link.style.display = 'none';
+		link.download = file.url;
+		link.target="_blank"
+		link.rel="noreferrer"
+		link.href = file.url;
+		document.body.appendChild(link);
+		link.click();
+		link.remove();
+	}
+
 	return (
 		<section className="file-container">
 			{arrFiles.map((file) => {
@@ -23,6 +33,7 @@ export default function FileContainer() {
 					file={file}
 					key={file.id}
 					handleDeleteClick={handleDeleteClick}
+					handleDownloadClick={handleDownloadClick}
 				/>
 			})}
 		</section>

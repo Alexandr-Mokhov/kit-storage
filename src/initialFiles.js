@@ -4,7 +4,7 @@ const arrFiles = [
 		name: 'qwe asd zxc zxczccrererereterteretre',
 		fileName: 'qwe',
 		mimeType: 'image/png',
-		url: 'https://avatars.mds.yandex.net/i?id=26eef3948c699b5b1000dc9e1bb2f0683196a1fd-12441665-images-thumbs&n=13',
+		url: 'https://w.forfun.com/fetch/fd/fd5dd4e04b5a65807bac5c49ddd4c241.jpeg',
 		createdAt: Date.now()
 	},
 	{
