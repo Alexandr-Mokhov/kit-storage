@@ -1,14 +1,21 @@
 import { useEffect, useState } from 'react';
 import initialFiles from '../../initialFiles';
 import File from '../File/File';
+import { setCount } from '../../store/slices/countSlice';
+import { useDispatch } from 'react-redux';
 import './FileContainer.css';
 
 export default function FileContainer() {
+	const dispatch = useDispatch();
 	const [arrFiles, setArrFiles] = useState([]);
 
 	useEffect(() => {
 		setArrFiles(initialFiles);
 	}, []);
+
+	useEffect(() => {
+		dispatch(setCount(arrFiles.length))
+	}, [arrFiles, dispatch])
 
 	function handleDeleteClick(file) {
 		setArrFiles((state) => state.filter(item => item.id !== file.id));
