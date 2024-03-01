@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Kit Storage - Личный кабинет файлового хранилища  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Обзор  
+🟣 Описание  
+🟣 Инструкция  
+🟣 Что было сделано  
+🟣 Стек и инструменты  
+🟣 Ссылки  
 
-## Available Scripts
+### Описание  
+Интерфейс для сервиса хранения файлов, с регистрацией и авторизацией.  
+После регистрации и авторизации просиходит вход в личный кабинет.  
+В личном кабинете можно загружать, просматривать, скачивать и удалять файлы.  
+Если добавили картинку, то отображается привьюшка, если документ - то иконка документа.  
 
-In the project directory, you can run:
+### Описание  
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Что было сделано  
+➤ приложение написано на React;  
+➤ описана логика и вёрстка страниц регистрации, логина, личного кабинета;  
+➤ авторизация, и манипуляции с файлами защищены токеном;  
+➤ состояния хранятся в Redux;  
+➤ реализованы асинхронные GET-, POST, DELETE-запросы к API;  
+➤ изменяемое количество отображаемых файлов в зависимости от ширины экрана;  
+➤ ограничение количества файлов которые пользователь может загрузить - 20 шт;  
+➤ ограничение размера загружаемых данных за 1 запрос - 1 Mб;  
+➤ в личном кабинете счетчик загруженных файлов;
+➤ выход из личного кабинета;
+➤ описана инструкция по использованию;  
+➤ результат выложен на github;  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Стек и инструменты  
 
-### `npm test`
+<div>
+  <img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg" title="react" alt="react" width="40" height="40"/> 
+  <img src="https://github.com/devicons/devicon/blob/master/icons/redux/redux-original.svg" title="redux" alt="redux" width="40" height="40"/> 
+  <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="javascript" alt="javascript" width="40" height="40"/> 
+  <img src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original.svg" title="html5" alt="html5" width="40" height="40"/> 
+  <img src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-original.svg" title="css3" alt="css" width="40" height="40"/> 
+  <img src="https://github.com/devicons/devicon/blob/master/icons/git/git-original.svg" title="git" alt="git" width="40" height="40"/> 
+  <img src="https://github.com/devicons/devicon/blob/master/icons/github/github-original.svg" title="github" alt="github" width="40" height="40"/> 
+  <img src="https://cdn.icon-icons.com/icons2/3053/PNG/512/postman_macos_bigsur_icon_189815.png" title="postman" alt="postman" width="40" height="40"/> 
+</div>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Ссылки  
+🌎 [Ссылка на личный кабинет]()  
 
-### `npm run build`
+🌎 [Ссылка на задание](https://github.com/Ahitkin-kitactive/test-js)  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Приятного просмотра!  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
