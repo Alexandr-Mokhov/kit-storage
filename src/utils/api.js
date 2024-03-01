@@ -12,12 +12,12 @@ function setHeaders() {
   };
 }
 
-export function addNewFile(data) {
+export function addNewFile(files) {
   return request('/api/media/upload', {
 		mode: 'no-cors',
     method: 'POST',
     headers: setHeaders(),
-    body: data
+    body: files
   });
 }
 
