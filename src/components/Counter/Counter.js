@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import { MAX_COUNT_FILES } from '../../constatns/constants';
-import './FileCounter.css';
+import './Counter.css';
 
-export default function FileCounter() {
+export default function Counter() {
 	const count = useSelector(state => state.count.count);
 
 	return (

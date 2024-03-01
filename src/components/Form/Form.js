@@ -1,9 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { authUser, registerUser } from '../../utils/auth';
+import { useDispatch } from 'react-redux';
+import { setLoggedIn } from '../../store/slices/loggedInSlice';
 import './Form.css';
 
 export default function Form({ nameForm, title, buttonText }) {
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [values, setValues] = useState({});
 
@@ -34,6 +37,7 @@ export default function Form({ nameForm, title, buttonText }) {
 			.then((res) => {
 				if (res.status === 'ok') {
 					localStorage.setItem('token', res.token);
+					dispatch(setLoggedIn(true));
 					navigate('/', { replace: true });
 				} else {
 					return Promise.reject(res.status);

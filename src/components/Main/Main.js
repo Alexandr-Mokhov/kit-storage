@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 import { addNewFile, getAllFiles } from '../../utils/api';
-import './Main.css';
 import FileContainer from '../FileContainer/FileContainer';
-import FileCounter from '../FileCounter/FileCounter';
+import Counter from '../Counter/Counter';
+import './Main.css';
 
 export default function Main() {
 	const fileInputRef = useRef();
@@ -74,7 +74,7 @@ export default function Main() {
 				/>
 				<button className="main__button" type="button" onClick={sendFile}>Загрузить</button>
 			</form>
-			<FileCounter />
+			<Counter />
 			<FileContainer />
 		</main>
 	);
