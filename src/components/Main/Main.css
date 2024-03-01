@@ -33,7 +33,7 @@
 input[type=file]::file-selector-button {
 	width: 20vw;
 	max-width: 180px;
-	min-width: 120px;
+	min-width: 125px;
 	height: 35px;
 	border-radius: 5px;
 	cursor: pointer;
@@ -48,7 +48,7 @@ input[type=file]::file-selector-button:hover {
 .main__button {
 	width: 20vw;
 	max-width: 180px;
-	min-width: 120px;
+	min-width: 125px;
 	height: 35px;
 	border-radius: 5px;
 	cursor: pointer;
