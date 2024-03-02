@@ -1,5 +1,7 @@
 import { useRef } from 'react';
 import { addNewFile } from '../../utils/api';
+import returnReject from '../../utils/returnReject';
+import handleError from '../../utils/handleError';
 import FileContainer from '../FileContainer/FileContainer';
 import Counter from '../Counter/Counter';
 import { ERR_FILE_UPLOAD, STATUS_OK } from '../../constatns/constants';
@@ -23,14 +25,10 @@ export default function Main() {
 				if (res.status === STATUS_OK) {
 					// alert('Файл')
 				} else {
-					return Promise.reject(res.status);
+					returnReject(res);
 				}
 			})
-			.catch((err) => {
-				console.log(err + ` : ${ERR_FILE_UPLOAD}`);
-				alert(ERR_FILE_UPLOAD);
-			});
-
+			.catch(err => handleError(err, ERR_FILE_UPLOAD));
 	}
 
 	return (

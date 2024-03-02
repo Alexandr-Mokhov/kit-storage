@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { authUser, registerUser } from '../../utils/auth';
 import { useDispatch } from 'react-redux';
 import { setLoggedIn } from '../../store/slices/loggedInSlice';
+import returnReject from '../../utils/returnReject';
+import handleError from '../../utils/handleError';
 import { ERR_INPUT_DATA, STATUS_OK } from '../../constatns/constants';
 import './Form.css';
 
@@ -24,13 +26,10 @@ export default function Form({ nameForm, title, buttonText }) {
 				if (res.status === STATUS_OK) {
 					navigate('/login', { replace: true });
 				} else {
-					return Promise.reject(res.status);
+					returnReject(res);
 				}
 			})
-			.catch((err) => {
-				console.log(err + ` : ${ERR_INPUT_DATA}`);
-				alert(ERR_INPUT_DATA + ', проверьте правильность');
-			});
+			.catch(err => handleError(err, ERR_INPUT_DATA));
 	}
 
 	function userAuthorization(email, password) {
@@ -41,13 +40,10 @@ export default function Form({ nameForm, title, buttonText }) {
 					dispatch(setLoggedIn(true));
 					navigate('/', { replace: true });
 				} else {
-					return Promise.reject(res.status);
+					returnReject(res);
 				}
 			})
-			.catch((err) => {
-				console.log(err + ` : ${ERR_INPUT_DATA}`);
-				alert(ERR_INPUT_DATA + ', проверьте правильность');
-			});
+			.catch(err => handleError(err, ERR_INPUT_DATA));
 	}
 
 	function handleSubmit(evt) {

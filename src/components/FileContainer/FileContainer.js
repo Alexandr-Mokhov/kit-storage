@@ -3,6 +3,8 @@ import { deleteFile, getAllFiles } from '../../utils/api';
 import { setCount } from '../../store/slices/countSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAllFiles } from '../../store/slices/allFilesSlice';
+import returnReject from '../../utils/returnReject';
+import handleError from '../../utils/handleError';
 import { ERR_DELETE_FILE, ERR_LOADING_ALL_FILES, STATUS_OK } from '../../constatns/constants';
 import File from '../File/File';
 import './FileContainer.css';
@@ -17,13 +19,10 @@ export default function FileContainer() {
 				if (res.status === STATUS_OK) {
 					dispatch(setAllFiles(res.files));
 				} else {
-					return Promise.reject(res.status);
+					returnReject(res);
 				}
 			})
-			.catch((err) => {
-				console.log(err + ` : ${ERR_LOADING_ALL_FILES}`);
-				alert(ERR_LOADING_ALL_FILES);
-			});
+			.catch(err => handleError(err, ERR_LOADING_ALL_FILES));
 	}, [dispatch])
 
 	useEffect(() => {
@@ -36,13 +35,10 @@ export default function FileContainer() {
 				if (res.status === STATUS_OK) {
 					dispatch(setAllFiles(allFiles.filter(item => item.id !== file.id)));
 				} else {
-					return Promise.reject(res.status);
+					returnReject(res);
 				}
 			})
-			.catch((err) => {
-				console.log(err + ` : ${ERR_DELETE_FILE}`);
-				alert(ERR_DELETE_FILE);
-			});
+			.catch(err => handleError(err, ERR_DELETE_FILE));
 	}
 
 	function handleDownloadClick(file) {
