@@ -5,28 +5,16 @@ import Counter from '../Counter/Counter';
 import './Main.css';
 
 export default function Main() {
-	const fileInputRef = useRef();
-
-	// const handleChange = (evt) => {
-	// 	const files = fileInputRef.current.files;
-	// 	let formData = new FormData();
-	// 	for (let i = 0; i < files.length; i++) {
-	// 		formData.append(files[i], files[i].name);
-	// 	}
-	// 	// console.log(formData);
-	// };
+	const fileInput = useRef();
 
 	function sendFile(evt) {
 		evt.preventDefault();
-		const files = fileInputRef.current.files;
+		const files = fileInput.current.files;
 		const formData = new FormData();
 
 		for (const file of files) {
-			formData.append('files', file);
+			formData.append('files[]', file);
 		}
-		console.log(formData);
-
-		console.log(formData.getAll('files'));
 
 		addNewFile(formData)
 			.then((res) => {
@@ -39,7 +27,7 @@ export default function Main() {
 			})
 			.catch((err) => {
 				console.log(err + ` : Ошибка введенных данных`);
-				// alert('Ошибка введенных данных, проверьте правильность');
+				alert('Ошибка введенных данных, проверьте правильность');
 			});
 
 		getAllFiles()
@@ -61,15 +49,14 @@ export default function Main() {
 		<main className="main">
 			<h2 className="main__title">Личный кабинет пользователя</h2>
 			<p className="main__subtitle">Здесь Вы можете загружать, просматривать, скачивать и удалять Ваши файлы</p>
-			<form /*ref={fileInputRef}*/ /*onSubmit={sendFile}*/ className="main__download">
+			<form className="main__download">
 				<input
 					id="input-download"
 					className="main__input"
-					name="download"
+					name="upload"
 					type="file"
-					// onChange={handleChange}
 					required
-					ref={fileInputRef}
+					ref={fileInput}
 					multiple={true}
 				/>
 				<button className="main__button" type="button" onClick={sendFile}>Загрузить</button>

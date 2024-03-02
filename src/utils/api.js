@@ -8,13 +8,11 @@ function setHeaders() {
   const token = localStorage.getItem('token');
   return { 
     'Authorization': `Bearer ${token}`,
-    'Content-Type': 'multipart/form-data',
   };
 }
 
 export function addNewFile(files) {
   return request('/api/media/upload', {
-		mode: 'no-cors',
     method: 'POST',
     headers: setHeaders(),
     body: files
