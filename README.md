@@ -51,7 +51,7 @@
 </div>
 
 ### Ссылки  
-🌎 [Ссылка на личный кабинет]()  
+🌎 [Ссылка на работу](https://github.com/Alexandr-Mokhov/test-kit)  
 
 🌎 [Ссылка на задание](https://github.com/Ahitkin-kitactive/test-js)  
 
