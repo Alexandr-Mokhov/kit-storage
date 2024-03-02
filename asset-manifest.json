@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Alexandr-Mokhov/test-kit/static/css/main.75e98496.css",
+    "main.js": "/Alexandr-Mokhov/test-kit/static/js/main.4340e1ce.js",
+    "static/js/453.5a1e1573.chunk.js": "/Alexandr-Mokhov/test-kit/static/js/453.5a1e1573.chunk.js",
+    "static/media/icon-delete.png": "/Alexandr-Mokhov/test-kit/static/media/icon-delete.7079ab050f37ae61e08e.png",
+    "index.html": "/Alexandr-Mokhov/test-kit/index.html",
+    "main.75e98496.css.map": "/Alexandr-Mokhov/test-kit/static/css/main.75e98496.css.map",
+    "main.4340e1ce.js.map": "/Alexandr-Mokhov/test-kit/static/js/main.4340e1ce.js.map",
+    "453.5a1e1573.chunk.js.map": "/Alexandr-Mokhov/test-kit/static/js/453.5a1e1573.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.75e98496.css",
+    "static/js/main.4340e1ce.js"
+  ]
+}
