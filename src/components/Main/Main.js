@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { addNewFile } from '../../utils/api';
 import FileContainer from '../FileContainer/FileContainer';
 import Counter from '../Counter/Counter';
+import { ERR_FILE_UPLOAD, STATUS_OK } from '../../constatns/constants';
 import './Main.css';
 
 export default function Main() {
@@ -19,15 +20,15 @@ export default function Main() {
 		addNewFile(formData)
 			.then((res) => {
 				console.log(res);
-				if (res.status === 'ok') {
+				if (res.status === STATUS_OK) {
 					// alert('Файл')
 				} else {
 					return Promise.reject(res.status);
 				}
 			})
 			.catch((err) => {
-				console.log(err + ` : Ошибка введенных данных`);
-				alert('Ошибка введенных данных, проверьте правильность');
+				console.log(err + ` : ${ERR_FILE_UPLOAD}`);
+				alert(ERR_FILE_UPLOAD);
 			});
 
 	}

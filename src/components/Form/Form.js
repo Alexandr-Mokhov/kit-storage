@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { authUser, registerUser } from '../../utils/auth';
 import { useDispatch } from 'react-redux';
 import { setLoggedIn } from '../../store/slices/loggedInSlice';
+import { ERR_INPUT_DATA, STATUS_OK } from '../../constatns/constants';
 import './Form.css';
 
 export default function Form({ nameForm, title, buttonText }) {
@@ -20,22 +21,22 @@ export default function Form({ nameForm, title, buttonText }) {
 	function userRegistration(name, email, password) {
 		registerUser(name, email, password)
 			.then((res) => {
-				if (res.status === 'ok') {
+				if (res.status === STATUS_OK) {
 					navigate('/login', { replace: true });
 				} else {
 					return Promise.reject(res.status);
 				}
 			})
 			.catch((err) => {
-				console.log(err + ` : Ошибка введенных данных`);
-				alert('Ошибка введенных данных, проверьте правильность');
+				console.log(err + ` : ${ERR_INPUT_DATA}`);
+				alert(ERR_INPUT_DATA + ', проверьте правильность');
 			});
 	}
 
 	function userAuthorization(email, password) {
 		authUser(email, password)
 			.then((res) => {
-				if (res.status === 'ok') {
+				if (res.status === STATUS_OK) {
 					localStorage.setItem('token', res.token);
 					dispatch(setLoggedIn(true));
 					navigate('/', { replace: true });
@@ -44,8 +45,8 @@ export default function Form({ nameForm, title, buttonText }) {
 				}
 			})
 			.catch((err) => {
-				console.log(err + ` : Ошибка введенных данных`);
-				alert('Ошибка введенных данных, проверьте правильность');
+				console.log(err + ` : ${ERR_INPUT_DATA}`);
+				alert(ERR_INPUT_DATA + ', проверьте правильность');
 			});
 	}
 
