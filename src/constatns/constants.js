@@ -1,7 +1,10 @@
 export const MAX_COUNT_FILES = 20;
+export const MAX_SIZE_FILE = 1048576;
 export const ERR_LOADING_ALL_FILES = 'Ошибка загрузки файлов с сервера';
 export const ERR_DELETE_FILE = 'Ошибка удаления файла на сервере';
 export const ERR_INPUT_DATA = 'Ошибка введенных данных';
-export const ERR_FILE_UPLOAD = 'Ошибка загрузки файда на сервер';
+export const ERR_FILE_UPLOAD = 'Ошибка загрузки файла на сервер';
 export const STATUS_OK = 'ok';
 export const ERR_LOADING_FILE = 'Ошибка загрузки файла';
+export const ERR_FILE_LIMIT = 'Вы превысили количество загружаемых файлов на: ';
+export const ERR_FILE_LIMIT_SIZE = 'превышает размер 1 Мб';

@@ -1,17 +1,26 @@
 import { useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setAllFiles } from '../../store/slices/allFilesSlice';
 import { addNewFile, getAllFiles } from '../../utils/api';
 import returnReject from '../../utils/returnReject';
 import handleError from '../../utils/handleError';
 import FileContainer from '../FileContainer/FileContainer';
 import Counter from '../Counter/Counter';
-import { ERR_FILE_UPLOAD, ERR_LOADING_ALL_FILES, STATUS_OK } from '../../constatns/constants';
+import {
+	ERR_FILE_LIMIT,
+	ERR_FILE_LIMIT_SIZE,
+	ERR_FILE_UPLOAD,
+	ERR_LOADING_ALL_FILES,
+	MAX_COUNT_FILES,
+	MAX_SIZE_FILE,
+	STATUS_OK
+} from '../../constatns/constants';
 import './Main.css';
 
 export default function Main() {
 	const fileInput = useRef();
 	const dispatch = useDispatch();
+	const count = useSelector(state => state.count.count);
 
 	function sendFile(evt) {
 		evt.preventDefault();
@@ -42,6 +51,24 @@ export default function Main() {
 			.catch(err => handleError(err, ERR_FILE_UPLOAD));
 	}
 
+	function handleChange() {
+		const files = fileInput.current.files;
+
+		if (count + files.length > MAX_COUNT_FILES) {
+			alert(ERR_FILE_LIMIT + `${count + files.length - MAX_COUNT_FILES}`);
+			fileInput.current.value = null;
+			return
+		}
+
+		for (const file of files) {
+			if (file.size >= MAX_SIZE_FILE) {
+				alert(`Файл: ${file.name} - ${ERR_FILE_LIMIT_SIZE}`);
+				fileInput.current.value = null;
+				return
+			}
+		}
+	}
+
 	return (
 		<main className="main">
 			<h2 className="main__title">Личный кабинет пользователя</h2>
@@ -55,6 +82,7 @@ export default function Main() {
 					required
 					ref={fileInput}
 					multiple={true}
+					onChange={handleChange}
 				/>
 				<button className="main__button" type="button" onClick={sendFile}>Загрузить</button>
 			</form>
