@@ -40,5 +40,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://github.com/Alexandr-Mokhov/test-kit/"
+  "homepage": "https://alexandr-mokhov.github.io/test-kit/",
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
+  }
 }
