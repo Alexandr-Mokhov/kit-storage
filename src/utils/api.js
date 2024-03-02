@@ -22,3 +22,10 @@ export function addNewFile(files) {
 export function getAllFiles() {
   return request('/api/media', { headers: setHeaders() })
 };
+
+export function deleteFile(idFile) {
+  return request(`/api/media/${idFile}`, {
+    method: 'DELETE',
+    headers: setHeaders(),
+  })
+};

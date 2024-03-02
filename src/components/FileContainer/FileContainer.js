@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { getAllFiles } from '../../utils/api';
+import { deleteFile, getAllFiles } from '../../utils/api';
 import { setCount } from '../../store/slices/countSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAllFiles } from '../../store/slices/allFilesSlice';
@@ -12,19 +12,17 @@ export default function FileContainer() {
 
 	useEffect(() => {
 		getAllFiles()
-		.then((res) => {
-			console.log(res);
-			if (res.status === 'ok') {
-				const newArr = res.files.map(i => i)
-				dispatch(setAllFiles(newArr));
-			} else {
-				return Promise.reject(res.status);
-			}
-		})
-		.catch((err) => {
-			console.log(err + ` : Ошибка введенных данных`);
-			alert('Ошибка введенных данных, проверьте правильность');
-		});
+			.then((res) => {
+				if (res.status === 'ok') {
+					dispatch(setAllFiles(res.files));
+				} else {
+					return Promise.reject(res.status);
+				}
+			})
+			.catch((err) => {
+				console.log(err + ` : Ошибка загрузки файлов с сервера`);
+				alert('Ошибка загрузки файлов с сервера');
+			});
 	}, [dispatch])
 
 	useEffect(() => {
@@ -32,15 +30,26 @@ export default function FileContainer() {
 	}, [allFiles, dispatch])
 
 	function handleDeleteClick(file) {
-		dispatch(setAllFiles(allFiles.filter(item => item.id !== file.id)));
+		deleteFile(file.id)
+			.then((res) => {
+				if (res.status === 'ok') {
+					dispatch(setAllFiles(allFiles.filter(item => item.id !== file.id)));
+				} else {
+					return Promise.reject(res.status);
+				}
+			})
+			.catch((err) => {
+				console.log(err + ` : Ошибка удаления файла на сервере`);
+				alert('Ошибка удаления файла на сервере');
+			});
 	}
 
 	function handleDownloadClick(file) {
 		const link = document.createElement('a');
 		link.style.display = 'none';
 		link.download = file.url;
-		link.target="_blank"
-		link.rel="noreferrer"
+		link.target = "_blank"
+		link.rel = "noreferrer"
 		link.href = file.url;
 		document.body.appendChild(link);
 		link.click();
@@ -60,12 +69,3 @@ export default function FileContainer() {
 		</section>
 	);
 }
-
-// {
-//   "id": "09decda8-3e9d-46a4-934d-b1a5b74187f0",
-//   "name": "1680070890_pushinka-top-p-mega-krutie-avatarki-krasivo-39",
-//   "fileName": "1680070890_pushinka-top-p-mega-krutie-avatarki-krasivo-39.jpg",
-//   "mimeType": "image/jpeg",
-//   "url": "https://js-test.kitactive.ru/api/media/09decda8-3e9d-46a4-934d-b1a5b74187f0",
-//   "createdAt": "2024-03-01T17:45:20.000000Z"
-// }
