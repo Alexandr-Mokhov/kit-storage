@@ -1,14 +1,17 @@
 import { useRef } from 'react';
-import { addNewFile } from '../../utils/api';
+import { useDispatch } from 'react-redux';
+import { setAllFiles } from '../../store/slices/allFilesSlice';
+import { addNewFile, getAllFiles } from '../../utils/api';
 import returnReject from '../../utils/returnReject';
 import handleError from '../../utils/handleError';
 import FileContainer from '../FileContainer/FileContainer';
 import Counter from '../Counter/Counter';
-import { ERR_FILE_UPLOAD, STATUS_OK } from '../../constatns/constants';
+import { ERR_FILE_UPLOAD, ERR_LOADING_ALL_FILES, STATUS_OK } from '../../constatns/constants';
 import './Main.css';
 
 export default function Main() {
 	const fileInput = useRef();
+	const dispatch = useDispatch();
 
 	function sendFile(evt) {
 		evt.preventDefault();
@@ -21,9 +24,17 @@ export default function Main() {
 
 		addNewFile(formData)
 			.then((res) => {
-				console.log(res);
 				if (res.status === STATUS_OK) {
-					// alert('Файл')
+					getAllFiles()
+						.then((res) => {
+							if (res.status === STATUS_OK) {
+								dispatch(setAllFiles(res.files));
+								fileInput.current.value = null;
+							} else {
+								returnReject(res);
+							}
+						})
+						.catch(err => handleError(err, ERR_LOADING_ALL_FILES));
 				} else {
 					returnReject(res);
 				}
