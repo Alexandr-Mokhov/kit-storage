@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { addNewFile, getAllFiles } from '../../utils/api';
+import { addNewFile } from '../../utils/api';
 import FileContainer from '../FileContainer/FileContainer';
 import Counter from '../Counter/Counter';
 import './Main.css';
@@ -20,7 +20,7 @@ export default function Main() {
 			.then((res) => {
 				console.log(res);
 				if (res.status === 'ok') {
-
+					// alert('Файл')
 				} else {
 					return Promise.reject(res.status);
 				}
@@ -30,19 +30,6 @@ export default function Main() {
 				alert('Ошибка введенных данных, проверьте правильность');
 			});
 
-		getAllFiles()
-			.then((res) => {
-				console.log(res);
-				if (res.status === 'ok') {
-
-				} else {
-					return Promise.reject(res.status);
-				}
-			})
-			.catch((err) => {
-				console.log(err + ` : Ошибка введенных данных`);
-				alert('Ошибка введенных данных, проверьте правильность');
-			});
 	}
 
 	return (
