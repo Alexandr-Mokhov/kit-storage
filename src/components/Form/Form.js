@@ -13,12 +13,14 @@ export default function Form({ nameForm, title, buttonText }) {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [values, setValues] = useState({});
+	const [isValid, setIsValid] = useState(false);
 
 	const handleChange = (evt) => {
 		const target = evt.target;
 		const name = target.name;
 		const value = target.value;
 		setValues({ ...values, [name]: value });
+		setIsValid(target.checkValidity());
 	}
 
 	function userRegistration(name, email, password) {
@@ -65,7 +67,7 @@ export default function Form({ nameForm, title, buttonText }) {
 	}
 
 	return (
-		<form className="form" onSubmit={handleSubmit} name={nameForm}>
+		<form className="form" onSubmit={handleSubmit} name={nameForm} autoComplete="off">
 			<h2 className="form__title">{title}</h2>
 			{nameForm === "register" &&
 				<input
@@ -77,7 +79,6 @@ export default function Form({ nameForm, title, buttonText }) {
 					required
 					value={values['name'] || ''}
 					onChange={handleChange}
-					autoComplete="off"
 				/>}
 			<input
 				id="input-email"
@@ -88,7 +89,6 @@ export default function Form({ nameForm, title, buttonText }) {
 				required
 				value={values['email'] || ''}
 				onChange={handleChange}
-				autoComplete="off"
 			/>
 			<input
 				id="input-password"
@@ -102,7 +102,7 @@ export default function Form({ nameForm, title, buttonText }) {
 				onChange={handleChange}
 				autoComplete="off"
 			/>
-			<button className="form__button" type="submit">
+			<button className="form__button" type="submit" disabled={!isValid}>
 				{buttonText}
 			</button>
 			{nameForm === "register" ?

@@ -29,6 +29,11 @@
 	background-color: #EEE;
 }
 
+.form__button:disabled {
+	background-color: #61dafb;
+	cursor: default;
+}
+
 .form__link {
 	color: #FFF;
 	text-align: center;

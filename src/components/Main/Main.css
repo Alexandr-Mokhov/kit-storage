@@ -61,6 +61,11 @@ input[type=file]::file-selector-button:hover {
 	background-color: #EEE;
 }
 
+.main__button:disabled {
+	cursor:default;
+	background-color: #61dafb;
+}
+
 @media screen and (max-width: 490px) {
 	.main__download {
 		flex-direction: column;

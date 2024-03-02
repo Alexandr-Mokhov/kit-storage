@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAllFiles } from '../../store/slices/allFilesSlice';
 import { addNewFile, getAllFiles } from '../../utils/api';
@@ -19,6 +19,7 @@ import {
 import './Main.css';
 
 export default function Main() {
+	const [isDisabled, setIsDisabled] = useState(true);
 	const fileInput = useRef();
 	const dispatch = useDispatch();
 	const count = useSelector(state => state.count.count);
@@ -51,14 +52,22 @@ export default function Main() {
 				}
 			})
 			.catch(err => handleError(err, ERR_FILE_UPLOAD))
-			.finally(() => dispatch(setIsLoad(false)));
+			.finally(() => {
+				setIsDisabled(true);
+				dispatch(setIsLoad(false))
+			});
 	}
 
 	function handleChange() {
 		const files = fileInput.current.files;
+		const filesLength = files.length;
+		console.log(filesLength, isDisabled);
+		if (filesLength !== 0) {
+			setIsDisabled(false);
+		}
 
-		if (count + files.length > MAX_COUNT_FILES) {
-			alert(ERR_FILE_LIMIT + `${count + files.length - MAX_COUNT_FILES}`);
+		if (count + filesLength > MAX_COUNT_FILES) {
+			alert(ERR_FILE_LIMIT + `${count + filesLength - MAX_COUNT_FILES}`);
 			fileInput.current.value = null;
 			return
 		}
@@ -74,7 +83,7 @@ export default function Main() {
 
 	return (
 		<main className="main">
-			<h2 className="main__title">Личный кабинет пользователя</h2>
+			<h2 className="main__title">Личный кабинет</h2>
 			<p className="main__subtitle">Здесь Вы можете загружать, просматривать, скачивать и удалять Ваши файлы</p>
 			<form className="main__download">
 				<input
@@ -87,7 +96,9 @@ export default function Main() {
 					multiple={true}
 					onChange={handleChange}
 				/>
-				<button className="main__button" type="button" onClick={sendFile}>Загрузить</button>
+				<button className="main__button" type="button" onClick={sendFile} disabled={isDisabled}>
+					Загрузить
+				</button>
 			</form>
 			<Counter />
 			<FileContainer />
