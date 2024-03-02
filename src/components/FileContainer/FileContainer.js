@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setAllFiles } from '../../store/slices/allFilesSlice';
 import returnReject from '../../utils/returnReject';
 import handleError from '../../utils/handleError';
+import { setIsLoad } from '../../store/slices/isLoadSlice';
 import { ERR_DELETE_FILE, ERR_LOADING_ALL_FILES, ERR_LOADING_FILE, STATUS_OK } from '../../constatns/constants';
 import File from '../File/File';
 import './FileContainer.css';
@@ -14,6 +15,7 @@ export default function FileContainer() {
 	const allFiles = useSelector(state => state.allFiles.allFiles);
 
 	useEffect(() => {
+		dispatch(setIsLoad(true));
 		getAllFiles()
 			.then((res) => {
 				if (res.status === STATUS_OK) {
@@ -22,7 +24,8 @@ export default function FileContainer() {
 					returnReject(res);
 				}
 			})
-			.catch(err => handleError(err, ERR_LOADING_ALL_FILES));
+			.catch(err => handleError(err, ERR_LOADING_ALL_FILES))
+			.finally(() => dispatch(setIsLoad(false)));
 	}, [dispatch])
 
 	useEffect(() => {
@@ -30,6 +33,8 @@ export default function FileContainer() {
 	}, [allFiles, dispatch])
 
 	function handleDeleteClick(file) {
+		dispatch(setIsLoad(true));
+
 		deleteFile(file.id)
 			.then((res) => {
 				if (res.status === STATUS_OK) {
@@ -38,10 +43,13 @@ export default function FileContainer() {
 					returnReject(res);
 				}
 			})
-			.catch(err => handleError(err, ERR_DELETE_FILE));
+			.catch(err => handleError(err, ERR_DELETE_FILE))
+			.finally(() => dispatch(setIsLoad(false)));
 	}
 
 	function handleDownloadClick(file) {
+		dispatch(setIsLoad(true));
+
 		getFile(file.id)
 			.then(res => res.ok ? res.blob() : returnReject(res))
 			.then(res => {
@@ -56,7 +64,8 @@ export default function FileContainer() {
 				link.click();
 				link.remove();
 			})
-			.catch(err => handleError(err, ERR_LOADING_FILE));
+			.catch(err => handleError(err, ERR_LOADING_FILE))
+			.finally(() => dispatch(setIsLoad(false)));
 	}
 
 	return (

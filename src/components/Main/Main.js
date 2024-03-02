@@ -6,6 +6,7 @@ import returnReject from '../../utils/returnReject';
 import handleError from '../../utils/handleError';
 import FileContainer from '../FileContainer/FileContainer';
 import Counter from '../Counter/Counter';
+import { setIsLoad } from '../../store/slices/isLoadSlice';
 import {
 	ERR_FILE_LIMIT,
 	ERR_FILE_LIMIT_SIZE,
@@ -23,6 +24,7 @@ export default function Main() {
 	const count = useSelector(state => state.count.count);
 
 	function sendFile(evt) {
+		dispatch(setIsLoad(true));
 		evt.preventDefault();
 		const files = fileInput.current.files;
 		const formData = new FormData();
@@ -48,7 +50,8 @@ export default function Main() {
 					returnReject(res);
 				}
 			})
-			.catch(err => handleError(err, ERR_FILE_UPLOAD));
+			.catch(err => handleError(err, ERR_FILE_UPLOAD))
+			.finally(() => dispatch(setIsLoad(false)));
 	}
 
 	function handleChange() {

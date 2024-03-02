@@ -7,22 +7,25 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Main from './components/Main/Main';
 import ProtectedRouteElement from './components/ProtectedRoute/ProtectedRoute';
+import Preloader from './components/Preloader/Preloader';
 import './App.css';
 
 export default function App() {
   const loggedIn = useSelector(state => state.loggedIn.loggedIn);
+  const isLoad = useSelector(state => state.isLoad.isLoad);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-	useEffect(() => {
-		if (localStorage.getItem('token')) {
-			dispatch(setLoggedIn(true));
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      dispatch(setLoggedIn(true));
       navigate('/', { replace: true });
-		}
-	}, [dispatch, navigate])
+    }
+  }, [dispatch, navigate])
 
   return (
     <div className="page">
+      {isLoad && <Preloader />}
       <Header />
       <Routes>
         <Route path="/login" element={<Login />} />

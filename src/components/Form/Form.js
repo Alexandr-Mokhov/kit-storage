@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { setLoggedIn } from '../../store/slices/loggedInSlice';
 import returnReject from '../../utils/returnReject';
 import handleError from '../../utils/handleError';
+import { setIsLoad } from '../../store/slices/isLoadSlice';
 import { ERR_INPUT_DATA, STATUS_OK } from '../../constatns/constants';
 import './Form.css';
 
@@ -21,6 +22,8 @@ export default function Form({ nameForm, title, buttonText }) {
 	}
 
 	function userRegistration(name, email, password) {
+		dispatch(setIsLoad(true));
+
 		registerUser(name, email, password)
 			.then((res) => {
 				if (res.status === STATUS_OK) {
@@ -29,10 +32,13 @@ export default function Form({ nameForm, title, buttonText }) {
 					returnReject(res);
 				}
 			})
-			.catch(err => handleError(err, ERR_INPUT_DATA));
+			.catch(err => handleError(err, ERR_INPUT_DATA))
+			.finally(() => dispatch(setIsLoad(false)));
 	}
 
 	function userAuthorization(email, password) {
+		dispatch(setIsLoad(true));
+
 		authUser(email, password)
 			.then((res) => {
 				if (res.status === STATUS_OK) {
@@ -43,7 +49,8 @@ export default function Form({ nameForm, title, buttonText }) {
 					returnReject(res);
 				}
 			})
-			.catch(err => handleError(err, ERR_INPUT_DATA));
+			.catch(err => handleError(err, ERR_INPUT_DATA))
+			.finally(() => dispatch(setIsLoad(false)));
 	}
 
 	function handleSubmit(evt) {
