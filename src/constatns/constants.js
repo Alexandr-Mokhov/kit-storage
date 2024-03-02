@@ -4,3 +4,4 @@ export const ERR_DELETE_FILE = 'Ошибка удаления файла на с
 export const ERR_INPUT_DATA = 'Ошибка введенных данных';
 export const ERR_FILE_UPLOAD = 'Ошибка загрузки файда на сервер';
 export const STATUS_OK = 'ok';
+export const ERR_LOADING_FILE = 'Ошибка загрузки файла';

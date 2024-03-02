@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import { deleteFile, getAllFiles } from '../../utils/api';
+import { deleteFile, getAllFiles, getFile } from '../../utils/api';
 import { setCount } from '../../store/slices/countSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAllFiles } from '../../store/slices/allFilesSlice';
 import returnReject from '../../utils/returnReject';
 import handleError from '../../utils/handleError';
-import { ERR_DELETE_FILE, ERR_LOADING_ALL_FILES, STATUS_OK } from '../../constatns/constants';
+import { ERR_DELETE_FILE, ERR_LOADING_ALL_FILES, ERR_LOADING_FILE, STATUS_OK } from '../../constatns/constants';
 import File from '../File/File';
 import './FileContainer.css';
 
@@ -42,15 +42,21 @@ export default function FileContainer() {
 	}
 
 	function handleDownloadClick(file) {
-		const link = document.createElement('a');
-		link.style.display = 'none';
-		link.download = file.url;
-		link.target = "_blank"
-		link.rel = "noreferrer"
-		link.href = file.url;
-		document.body.appendChild(link);
-		link.click();
-		link.remove();
+		getFile(file.id)
+			.then(res => res.ok ? res.blob() : returnReject(res))
+			.then(res => {
+				const blob = new Blob([res], { type: `${file.mimeType}` });
+				const fileLink = window.URL.createObjectURL(blob);
+
+				const link = document.createElement('a');
+				link.style.display = 'none';
+				link.download = file.fileName;
+				link.href = fileLink;
+				document.body.appendChild(link);
+				link.click();
+				link.remove();
+			})
+			.catch(err => handleError(err, ERR_LOADING_FILE));
 	}
 
 	return (

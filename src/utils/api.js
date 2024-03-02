@@ -6,7 +6,7 @@ function request(url, option) {
 
 function setHeaders() {
   const token = localStorage.getItem('token');
-  return { 
+  return {
     'Authorization': `Bearer ${token}`,
   };
 }
@@ -20,7 +20,9 @@ export function addNewFile(files) {
 }
 
 export function getAllFiles() {
-  return request('/api/media', { headers: setHeaders() })
+  return request('/api/media', {
+    headers: setHeaders()
+  })
 };
 
 export function deleteFile(idFile) {
@@ -29,3 +31,10 @@ export function deleteFile(idFile) {
     headers: setHeaders(),
   })
 };
+
+export function getFile(idFile) {
+  return fetch(`https://js-test.kitactive.ru/api/media/${idFile}`, {
+    method: 'GET',
+    headers: setHeaders()
+  })
+}
