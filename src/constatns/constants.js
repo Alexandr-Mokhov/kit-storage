@@ -7,4 +7,4 @@ export const ERR_FILE_UPLOAD = 'Ошибка загрузки файла на с
 export const STATUS_OK = 'ok';
 export const ERR_LOADING_FILE = 'Ошибка загрузки файла';
 export const ERR_FILE_LIMIT = 'Вы превысили количество загружаемых файлов на: ';
-export const ERR_FILE_LIMIT_SIZE = 'превышает размер 1 Мб';
+export const ERR_FILE_LIMIT_SIZE = 'Выбранные файлы превышают размер 1 Мб';

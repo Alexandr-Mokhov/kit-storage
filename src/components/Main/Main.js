@@ -66,7 +66,8 @@ export default function Main() {
 	function handleChange() {
 		const files = fileInput.current.files;
 		const filesLength = files.length;
-		console.log(filesLength, isDisabled);
+		let overallSize = 0;
+		
 		if (filesLength !== 0) {
 			setIsDisabled(false);
 		}
@@ -78,11 +79,14 @@ export default function Main() {
 		}
 
 		for (const file of files) {
-			if (file.size >= MAX_SIZE_FILE) {
-				alert(`Файл: ${file.name} - ${ERR_FILE_LIMIT_SIZE}`);
-				fileInput.current.value = null;
-				return
-			}
+			overallSize += file.size;
+		}
+		
+		if (overallSize >= MAX_SIZE_FILE) {
+			alert(ERR_FILE_LIMIT_SIZE);
+			fileInput.current.value = null;
+			setIsDisabled(true);
+			return
 		}
 	}
 
