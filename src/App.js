@@ -21,8 +21,6 @@ export default function App() {
     if (localStorage.getItem('token')) {
       dispatch(setLoggedIn(true));
       navigate('/', { replace: true });
-    } else {
-      navigate('/register', { replace: true });
     }
   }, [dispatch, navigate])
 
