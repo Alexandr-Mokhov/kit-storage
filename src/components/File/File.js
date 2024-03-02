@@ -11,6 +11,7 @@ export default function File({ file, handleDeleteClick, handleDownloadClick }) {
 	const [srcImage, setSrcImage] = useState('');
 
 	useEffect(() => {
+		//** подгружаю картинки к файлам или иконки если документ */
 		getFile(file.id)
 			.then(res => res.ok ? res.blob() : returnReject(res))
 			.then(res => {

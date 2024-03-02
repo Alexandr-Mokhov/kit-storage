@@ -16,6 +16,7 @@ export default function FileContainer() {
 
 	useEffect(() => {
 		dispatch(setIsLoad(true));
+		//** при перезагрузках повторно получаю файлы с сервера */
 		getAllFiles()
 			.then((res) => {
 				if (res.status === STATUS_OK) {
@@ -29,12 +30,14 @@ export default function FileContainer() {
 	}, [dispatch])
 
 	useEffect(() => {
+		//** при зименении количества файлов обновляю счетчик */
 		dispatch(setCount(allFiles.length))
 	}, [allFiles, dispatch])
 
 	function handleDeleteClick(file) {
 		dispatch(setIsLoad(true));
 
+		//** удаление файла на сервере, если  успех - удаляем со страницы тоже */
 		deleteFile(file.id)
 			.then((res) => {
 				if (res.status === STATUS_OK) {
@@ -50,6 +53,7 @@ export default function FileContainer() {
 	function handleDownloadClick(file) {
 		dispatch(setIsLoad(true));
 
+		//** получение выбранного файла с сервера */
 		getFile(file.id)
 			.then(res => res.ok ? res.blob() : returnReject(res))
 			.then(res => {

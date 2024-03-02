@@ -25,7 +25,8 @@ export default function Form({ nameForm, title, buttonText }) {
 
 	function userRegistration(name, email, password) {
 		dispatch(setIsLoad(true));
-
+		
+		//** регистрируем на сервере, если успех - навигейтим на авторизацию */
 		registerUser(name, email, password)
 			.then((res) => {
 				if (res.status === STATUS_OK) {
@@ -40,7 +41,8 @@ export default function Form({ nameForm, title, buttonText }) {
 
 	function userAuthorization(email, password) {
 		dispatch(setIsLoad(true));
-
+		
+		//** авторизуем - получаем токен, навигейтим на гланую страницу */
 		authUser(email, password)
 			.then((res) => {
 				if (res.status === STATUS_OK) {

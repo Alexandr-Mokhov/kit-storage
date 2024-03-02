@@ -25,18 +25,22 @@ export default function Main() {
 	const count = useSelector(state => state.count.count);
 
 	function sendFile(evt) {
+		//** отпправка файла на сервер */
 		dispatch(setIsLoad(true));
 		evt.preventDefault();
 		const files = fileInput.current.files;
 		const formData = new FormData();
 
+		//** собираем файлы из инпута */
 		for (const file of files) {
 			formData.append('files[]', file);
 		}
 
+		//** передаем файлы на сервер */
 		addNewFile(formData)
 			.then((res) => {
 				if (res.status === STATUS_OK) {
+					//** если все ок - запрашиваем обновленный список */
 					getAllFiles()
 						.then((res) => {
 							if (res.status === STATUS_OK) {
@@ -58,6 +62,7 @@ export default function Main() {
 			});
 	}
 
+	//** при вводе проверяем чтобы количество и вес файлов соответствовали требованиям */
 	function handleChange() {
 		const files = fileInput.current.files;
 		const filesLength = files.length;
