@@ -8,6 +8,7 @@
 .file-counter__title {
 	margin: 0;
 	color: #777;
+	text-align: center;
 }
 
 .file-counter__count {

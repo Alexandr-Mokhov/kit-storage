@@ -8,10 +8,8 @@ export default function Counter() {
 	return (
 		<div className="file-counter">
 			<p className="file-counter__title">
-				Загруженых файлов: <span className="file-counter__count">{count}</span>
-			</p>
-			<p className="file-counter__title">
-				Максимум файлов: <span className="file-counter__count">{MAX_COUNT_FILES}</span>
+				Загруженных файлов:&nbsp;<span className="file-counter__count">{count} </span>
+				, максимум:&nbsp;<span className="file-counter__count">{MAX_COUNT_FILES}</span>
 			</p>
 		</div>
 	);

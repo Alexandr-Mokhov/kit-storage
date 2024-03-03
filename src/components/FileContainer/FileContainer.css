@@ -18,3 +18,12 @@
 		grid-template-columns: repeat(3, 1fr);
 	}
 }
+
+@media screen and (max-width: 400px) {
+	.file-container {
+		grid-template-columns: repeat(1, 1fr);
+		width: calc(100% - 40px);
+		gap: 15px;
+		padding: 10px 20px;
+	}
+}

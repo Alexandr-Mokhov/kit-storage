@@ -17,7 +17,7 @@ export default function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    //** при входе сразу на главную страницу или после перезарузки токена нет в хранилище - навигейтим на регистрацию */
+    //** при входе если есть токен - не просим повторную авторизацию и навигейтим на главную страницу */
     if (localStorage.getItem('token')) {
       dispatch(setLoggedIn(true));
       navigate('/', { replace: true });

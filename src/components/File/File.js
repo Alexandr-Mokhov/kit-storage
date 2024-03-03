@@ -36,12 +36,16 @@ export default function File({ file, handleDeleteClick, handleDownloadClick }) {
 
 	return (
 		<div className="file">
-			<p className="file__name">{file.name}</p>
+			<p className="file__name file__name_desctop">{file.name}</p>
 			<button className="file__button file__button_download" onClick={onDownloadFiles}>
 				<img className="file__img" src={srcImage} alt={file.name} />
+				<div className="file__icon-download-container">
+					<div className="file__icon file__icon_download" />
+				</div>
 			</button>
+			<p className="file__name file__name_mobile">{file.name}</p>
 			<button className="file__button file__button_delete" onClick={onFileDelete}>
-				<div className="file__icon-delete" />
+				<div className="file__icon file__icon_delete" />
 			</button>
 		</div>
 	);
