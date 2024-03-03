@@ -13,7 +13,7 @@
 	}
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 490px) {
 	.file-container {
 		grid-template-columns: repeat(3, 1fr);
 	}

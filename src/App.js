@@ -8,6 +8,7 @@ import Register from './components/Register/Register';
 import Main from './components/Main/Main';
 import ProtectedRouteElement from './components/ProtectedRoute/ProtectedRoute';
 import Preloader from './components/Preloader/Preloader';
+import Footer from './components/Footer/Footer';
 import './App.css';
 
 export default function App() {
@@ -35,6 +36,7 @@ export default function App() {
           <ProtectedRouteElement element={Main} loggedIn={loggedIn} />}
         />
       </Routes>
+      <Footer />
     </div>
   );
 }
