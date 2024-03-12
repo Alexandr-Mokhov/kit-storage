@@ -1,158 +1,158 @@
 .file {
-	position: relative;
-	color: #000;
-	background-color: #BBB;
-	max-width: 130px;
-	min-width: 90px;
-	border-radius: 10px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  position: relative;
+  color: #000;
+  background-color: #BBB;
+  max-width: 130px;
+  min-width: 90px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .file__name {
-	display: inline-block;
-	width: 90%;
-	font-size: 15px;
-	line-height: 20px;
-	margin: 8px 0;
-	text-align: center;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	overflow: hidden;
+  display: inline-block;
+  width: 90%;
+  font-size: 15px;
+  line-height: 20px;
+  margin: 8px 0;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .file__name_mobile {
-	display: none;
+  display: none;
 }
 
 .file__img {
-	width: 100%;
-	height: 100px;
-	object-fit: cover;
-	cursor: pointer;
-	border-radius: 5px;
-	opacity: 0.5;
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 5px;
+  opacity: 0.5;
 }
 
 .file__button {
-	cursor: pointer;
-	margin: 5px;
-	border: none;
-	background-color: #AAA;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+  cursor: pointer;
+  margin: 5px;
+  border: none;
+  background-color: #AAA;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .file__button:hover {
-	transform: scale(1.05);
-	opacity: 1;
+  transform: scale(1.05);
+  opacity: 1;
 }
 
 .file__button:hover .file__img {
-	opacity: 1;
+  opacity: 1;
 }
 
 .file__button:hover .file__icon-download-container {
-	display: none;
+  display: none;
 }
 
 .file__button_download {
-	width: 90%;
-	height: 100px;
-	margin: 0;
-	padding: 0;
+  width: 90%;
+  height: 100px;
+  margin: 0;
+  padding: 0;
 }
 
 .file__button_delete {
-	width: 70px;
-	height: 30px;
-	border-radius: 3px;
+  width: 70px;
+  height: 30px;
+  border-radius: 3px;
 }
 
 .file__button_delete:hover {
-background-color: #999;
+  background-color: #999;
 }
 
 .file__icon-download-container {
-	position: absolute;
-	width: 50px;
-	height: 50px;
-	background-color: #CCC;
-	opacity: .7;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 8px;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #CCC;
+  opacity: .7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
 }
 
 .file__icon {
-	background-size: contain;
-	background-repeat: no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .file__icon_download {
-	background-image: url(../../images/icon-download.png);
-	width: 30px;
-	height: 30px;
+  background-image: url(../../images/icon-download.png);
+  width: 30px;
+  height: 30px;
 }
 
 .file__icon_delete {
-	background-image: url(../../images/icon-delete.png);
-	width: 20px;
-	height: 20px;
+  background-image: url(../../images/icon-delete.png);
+  width: 20px;
+  height: 20px;
 }
 
 @media screen and (max-width: 400px) {
-	.file {
-		max-width: 100%;
-		min-width: 90px;
-		flex-direction: row;
-		align-items: center;
-		justify-content: space-between;
-	}
+  .file {
+    max-width: 100%;
+    min-width: 90px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-	.file__name {
-		width: calc(100% - 140px);
-		margin: 0px 10px;
-		text-align: start;
-	}
+  .file__name {
+    width: calc(100% - 140px);
+    margin: 0px 10px;
+    text-align: start;
+  }
 
-	.file__name_desctop {
-		display: none;
-	}
+  .file__name_desctop {
+    display: none;
+  }
 
-	.file__name_mobile {
-		display: inline-block;
-	}
+  .file__name_mobile {
+    display: inline-block;
+  }
 
-	.file__img {
-		width: 50px;
-		height: 50px;
-	}
+  .file__img {
+    width: 50px;
+    height: 50px;
+  }
 
-	.file__button_download {
-		width: 50px;
-		height: 50px;
-		margin: 5px;
-	}
+  .file__button_download {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+  }
 
-	.file__button_delete {
-		width: 50px;
-		height: 50px;
-		border-radius: 5px;
-	}
+  .file__button_delete {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+  }
 
-	.file__icon-download-container {
-		width: 30px;
-		height: 30px;
-		border-radius: 4px;
-	}
+  .file__icon-download-container {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+  }
 
-	.file__icon_download {
-		width: 20px;
-		height: 20px;
-	}
+  .file__icon_download {
+    width: 20px;
+    height: 20px;
+  }
 }

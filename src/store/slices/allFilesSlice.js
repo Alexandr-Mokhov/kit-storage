@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-	allFiles: [],
+  allFiles: [],
 }
 
 const allFilesSlice = createSlice({

@@ -5,17 +5,17 @@ import { setAllFiles } from '../../store/slices/allFilesSlice';
 import './Logout.css';
 
 export default function Logout() {
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-	function onSignOut() {
-		dispatch(setLoggedIn(false));
-		localStorage.removeItem('token');
-		dispatch(setAllFiles([]));
-	}
+  function onSignOut() {
+    dispatch(setLoggedIn(false));
+    localStorage.removeItem('token');
+    dispatch(setAllFiles([]));
+  }
 
-	return (
-		<Link className="logout" to="/login" onClick={onSignOut} >
-			Выйти
-		</Link>
-	);
+  return (
+    <Link className="logout" to="/login" onClick={onSignOut} >
+      Выйти
+    </Link>
+  );
 }

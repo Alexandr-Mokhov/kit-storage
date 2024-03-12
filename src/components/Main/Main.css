@@ -1,81 +1,81 @@
 .main {
-	max-width: 1000px;
-	margin: 0 auto;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	flex: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
 }
 
 .main__title {
-	margin: 15px  20px 0;
+  margin: 15px 20px 0;
 }
 
 .main__subtitle {
-	margin: 15px  20px;
-	text-align: center;
-	color: #777;
+  margin: 15px 20px;
+  text-align: center;
+  color: #777;
 }
 
 .main__download {
-	width: calc(100% - 40px);
-	max-width: 730px;
-	border: 1px solid #555;
-	border-radius: 10px;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
+  width: calc(100% - 40px);
+  max-width: 730px;
+  border: 1px solid #555;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .main__input {
-	width: calc(100% - 20px);
-	margin: 10px;
+  width: calc(100% - 20px);
+  margin: 10px;
 }
 
 input[type=file]::file-selector-button {
-	width: 20vw;
-	max-width: 180px;
-	min-width: 135px;
-	height: 35px;
-	border-radius: 5px;
-	cursor: pointer;
-	border: none;
-	background-color: #EEE;
+  width: 20vw;
+  max-width: 180px;
+  min-width: 135px;
+  height: 35px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  background-color: #EEE;
 }
 
 input[type=file]::file-selector-button:hover {
-	background-color: #61dafb;
+  background-color: #61dafb;
 }
 
 .main__button {
-	width: 20vw;
-	max-width: 180px;
-	min-width: 135px;
-	height: 35px;
-	border-radius: 5px;
-	cursor: pointer;
-	border: none;
-	margin: 10px;
-	background-color: #EEE;
+  width: 20vw;
+  max-width: 180px;
+  min-width: 135px;
+  height: 35px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  margin: 10px;
+  background-color: #EEE;
 }
 
 .main__button:hover {
-	background-color: #61dafb;
+  background-color: #61dafb;
 }
 
 .main__button:disabled {
-	cursor:default;
-	background-color: #EEE;
+  cursor: default;
+  background-color: #EEE;
 }
 
 @media screen and (max-width: 540px) {
-	.main__download {
-		flex-direction: column;
-		align-items: flex-start;
-	}
+  .main__download {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-	.main__input {
-		width: calc(100% - 20px);
-	}
+  .main__input {
+    width: calc(100% - 20px);
+  }
 }

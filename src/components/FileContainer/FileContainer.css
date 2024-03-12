@@ -1,29 +1,29 @@
 .file-container {
-	max-width: 100%;
-	margin: 0 auto;
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	gap: 20px;
-	padding: 20px;
+  max-width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  padding: 20px;
 }
 
 @media screen and (max-width: 640px) {
-	.file-container {
-		grid-template-columns: repeat(4, 1fr);
-	}
+  .file-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 @media screen and (max-width: 490px) {
-	.file-container {
-		grid-template-columns: repeat(3, 1fr);
-	}
+  .file-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media screen and (max-width: 400px) {
-	.file-container {
-		grid-template-columns: repeat(1, 1fr);
-		width: calc(100% - 40px);
-		gap: 15px;
-		padding: 10px 20px;
-	}
+  .file-container {
+    grid-template-columns: repeat(1, 1fr);
+    width: calc(100% - 40px);
+    gap: 15px;
+    padding: 10px 20px;
+  }
 }

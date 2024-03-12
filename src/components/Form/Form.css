@@ -1,40 +1,40 @@
 .form {
-	display: flex;
-	flex-direction: column;
-	width: 250px;
-	gap: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  gap: 30px;
 }
 
 .form__title {
-	margin: 0;
-	text-align: center;
+  margin: 0;
+  text-align: center;
 }
 
 .form__input {
-	height: 30px;
-	padding: 0 10px;
-	border-radius: 5px;
-	border: none;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 5px;
+  border: none;
 }
 
 .form__button {
-	height: 35px;
-	border-radius: 5px;
-	cursor: pointer;
-	border: none;
-	background-color: #61dafb;
+  height: 35px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  background-color: #61dafb;
 }
 
 .form__button:hover {
-	background-color: #EEE;
+  background-color: #EEE;
 }
 
 .form__button:disabled {
-	background-color: #61dafb;
-	cursor: default;
+  background-color: #61dafb;
+  cursor: default;
 }
 
 .form__link {
-	color: #FFF;
-	text-align: center;
+  color: #FFF;
+  text-align: center;
 }
