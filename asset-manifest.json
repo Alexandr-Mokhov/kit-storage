@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/test-kit/static/css/main.c4201b83.css",
-    "main.js": "/test-kit/static/js/main.20f9b949.js",
-    "static/js/453.5a1e1573.chunk.js": "/test-kit/static/js/453.5a1e1573.chunk.js",
-    "static/media/icon-delete.png": "/test-kit/static/media/icon-delete.7079ab050f37ae61e08e.png",
-    "index.html": "/test-kit/index.html",
-    "main.c4201b83.css.map": "/test-kit/static/css/main.c4201b83.css.map",
-    "main.20f9b949.js.map": "/test-kit/static/js/main.20f9b949.js.map",
-    "453.5a1e1573.chunk.js.map": "/test-kit/static/js/453.5a1e1573.chunk.js.map"
+    "main.css": "/kit-storage/static/css/main.480048e8.css",
+    "main.js": "/kit-storage/static/js/main.346b73e1.js",
+    "static/js/453.5a1e1573.chunk.js": "/kit-storage/static/js/453.5a1e1573.chunk.js",
+    "static/media/icon-delete.png": "/kit-storage/static/media/icon-delete.7079ab050f37ae61e08e.png",
+    "index.html": "/kit-storage/index.html",
+    "main.480048e8.css.map": "/kit-storage/static/css/main.480048e8.css.map",
+    "main.346b73e1.js.map": "/kit-storage/static/js/main.346b73e1.js.map",
+    "453.5a1e1573.chunk.js.map": "/kit-storage/static/js/453.5a1e1573.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c4201b83.css",
-    "static/js/main.20f9b949.js"
+    "static/css/main.480048e8.css",
+    "static/js/main.346b73e1.js"
   ]
 }
